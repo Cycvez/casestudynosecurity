@@ -17,10 +17,10 @@ public class HomeController {
 	
     @GetMapping("/")
     public String displayHome(Model model) {
-        User user = new User();
-
-        model.addAttribute("user", user);
-        model.addAttribute("usersList", userDao.findAll());
+//        User user = new User();
+//
+//        model.addAttribute("user", user);
+//        model.addAttribute("usersList", userDao.findAll());
 
         return "login";
     }

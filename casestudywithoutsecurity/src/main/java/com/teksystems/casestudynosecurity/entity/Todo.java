@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 
 
 @Entity
-public class ToDo {
+public class Todo {
 	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Id
 	    private int id;
@@ -88,7 +88,7 @@ public class ToDo {
 				return false;
 			if (getClass() != obj.getClass())
 				return false;
-			ToDo other = (ToDo) obj;
+			Todo other = (Todo) obj;
 			if (completed != other.completed)
 				return false;
 			if (description == null) {
@@ -110,6 +110,8 @@ public class ToDo {
 				return false;
 			return true;
 		}
+
+
 
 	    
     

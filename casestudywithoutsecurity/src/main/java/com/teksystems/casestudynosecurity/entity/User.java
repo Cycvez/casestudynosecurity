@@ -2,17 +2,14 @@ package com.teksystems.casestudynosecurity.entity;
 
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 
@@ -25,10 +22,10 @@ public class User {
 	private int id;
 	
 	@Column(nullable = false)
-	private String fname;
+	private String firstname;
 	
 	@Column(nullable = false)
-	private String lname;
+	private String lastname;
 	
 	@Column(nullable = false)
 	private String email;
@@ -49,60 +46,71 @@ public class User {
             inverseJoinColumns = { @JoinColumn(name = "reciever_id") })
     private List<User> friends;
 
-    
-    
-    
+
 	public int getId() {
 		return id;
 	}
+
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getFname() {
-		return fname;
+
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setFname(String fname) {
-		this.fname = fname;
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	public String getLname() {
-		return lname;
+
+	public String getLastname() {
+		return lastname;
 	}
 
-	public void setLname(String lname) {
-		this.lname = lname;
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
+
 
 	public String getEmail() {
 		return email;
 	}
 
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 
 	public String getUsername() {
 		return username;
 	}
 
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 
 	public String getPhone() {
 		return phone;
 	}
 
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
+
 	public String getPassword() {
 		return password;
 	}
+
 
 	public void setPassword(String password) {
 		this.password = password;
@@ -112,6 +120,7 @@ public class User {
 	public List<User> getFriends() {
 		return friends;
 	}
+
 
 	public void setFriends(List<User> friends) {
 		this.friends = friends;
@@ -123,15 +132,16 @@ public class User {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((fname == null) ? 0 : fname.hashCode());
+		result = prime * result + ((firstname == null) ? 0 : firstname.hashCode());
 		result = prime * result + ((friends == null) ? 0 : friends.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((lname == null) ? 0 : lname.hashCode());
+		result = prime * result + ((lastname == null) ? 0 : lastname.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -147,10 +157,10 @@ public class User {
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (fname == null) {
-			if (other.fname != null)
+		if (firstname == null) {
+			if (other.firstname != null)
 				return false;
-		} else if (!fname.equals(other.fname))
+		} else if (!firstname.equals(other.firstname))
 			return false;
 		if (friends == null) {
 			if (other.friends != null)
@@ -159,10 +169,10 @@ public class User {
 			return false;
 		if (id != other.id)
 			return false;
-		if (lname == null) {
-			if (other.lname != null)
+		if (lastname == null) {
+			if (other.lastname != null)
 				return false;
-		} else if (!lname.equals(other.lname))
+		} else if (!lastname.equals(other.lastname))
 			return false;
 		if (password == null) {
 			if (other.password != null)
@@ -182,10 +192,6 @@ public class User {
 		return true;
 	}
 
-
-
-
-
-	
-
+    
+    
 }

@@ -12,9 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 
+
+
 @Entity 
 public class Expense {
-	   @GeneratedValue(strategy = GenerationType.IDENTITY)
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Id
 	    private int id;
 
@@ -113,5 +115,4 @@ public class Expense {
 	        }
 	        return true;
 	    }
-	
 }
