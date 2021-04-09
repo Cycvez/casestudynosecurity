@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<title>Case Study</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row m-4 border border-dark">
+			<div class="col text-center m-3">
+				<a href="/" class="btn btn-outline-primary btn-lg">Home</a>
+			</div>
+			<div class="col text-center m-3">
+				<a href="usersHome" class="btn btn-outline-primary btn-lg">Users</a>
+			</div>
+			<div class="col text-center m-3">
+				<a href="/" class="btn btn-outline-primary btn-lg">out of order</a>
+			</div>
+			<div class="col text-center m-3">
+				<a href="/" class="btn btn-outline-primary btn-lg">out of order</a>
+			</div>
+			<div class="col text-center m-3">
+				<a href="/" class="btn btn-outline-primary btn-lg">out of order</a>
+			</div>
+		</div>
+		<div class="row m-4">
+			<div class="col text-center border border-dark">
+				<h1 th:text="${user.firstname}"></h1>
+			</div>
+		</div>
+		<div class="row m-4 ">
+			<div class="col-6 text-center border border-dark">
+				<span class="h3">Incomes</span>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Details</th>
+							<th>Amount</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="income : ${incomeList}">
+							<td th:text="${income.id}">ID</td>
+							<td th:text="${income.name}">name</td>
+							<td th:text="${income.description}">description</td>
+							<td th:text="${income.amount}">amount</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-6 text-center border border-dark">
+				<span class="h3"><u>Add New Income</u></span>
+				<div class="col-9 text-center m-3">
+					<form action="addIncome" method="POST">
+						<div class="form-group row">
+							<label for="name" class="col-3 col-form-label"> Name</label>
+							<div class="col-9">
+								<input type="text" name="name" id="name" class="form-control" />
+								<div th:if="${#fields.hasErrors('income.name')}">
+									<p th:each="error:${#fields.errors('income.name')}"
+										class="alert alert-danger" th:text="${error}">Bad name</p>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="description" class="col-3 col-form-label">
+								Description</label>
+							<div class="col-9">
+								<input type="text" name="description" id="description"
+									class="form-control" />
+								<div th:if="${#fields.hasErrors('income.description')}">
+									<p th:each="error : ${#fields.errors('income.description')}"
+										class="alert alert-danger" th:text="${error}">Bad name</p>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="amount" class="col-3 col-form-label"> Amount</label>
+							<div class="col-9">
+								<input type="text" name="amount" id="description"
+									class="form-control" />
+								<div th:if="${#fields.hasErrors('income.amount')}">
+									<p th:each="error : ${#fields.errors('income.amount')}"
+										class="alert alert-danger" th:text="${error}">Bad name</p>
+								</div>
+							</div>
+						</div>
+						<input type="hidden" name="userId" th:value="${user.id}" />
+						<button type="submit" class="btn btn-primary">Add Income</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+</body>
+</html>

@@ -19,10 +19,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.teksystems.casestudynosecurity.dao.ExpenseDao;
 import com.teksystems.casestudynosecurity.dao.IncomeDao;
+import com.teksystems.casestudynosecurity.dao.PostsDao;
 import com.teksystems.casestudynosecurity.dao.TodoDao;
 import com.teksystems.casestudynosecurity.dao.UserDao;
 import com.teksystems.casestudynosecurity.entity.Expense;
 import com.teksystems.casestudynosecurity.entity.Income;
+import com.teksystems.casestudynosecurity.entity.Posts;
 import com.teksystems.casestudynosecurity.entity.Todo;
 import com.teksystems.casestudynosecurity.entity.User;
 
@@ -35,6 +37,9 @@ public class UserController {
 	@Autowired
     ExpenseDao expenseDao;
 
+    @Autowired
+    PostsDao postsDao;
+    
     @Autowired
     IncomeDao incomeDao;
 
@@ -111,42 +116,26 @@ public class UserController {
             	userTodo.add(t);
             }
         }
+        
+        List<Posts> userPosts= new ArrayList<>();
+        List<Posts> allPosts= postsDao.findAll();
+
+        for (Posts p: allPosts) {
+            if (p.getUser() == user) {
+            	userPosts.add(p);
+            }
+        }
 
         model.addAttribute("user", user);
         model.addAttribute("budget", budget);
         model.addAttribute("incomeList", userIncomes);
         model.addAttribute("expenseList", userExpenses);
         model.addAttribute("userTodo", userTodo);
+        model.addAttribute("userPosts", userPosts);
 
         return "userHome";
     }
 	
 	
-	
-//	@PostMapping("newUser")
-//    public String addUser(String fname, String lname, String username, String email, String phone, String password) {
-//        List<User> allUsers = users.findAll();
-//        List<String> usernames = new ArrayList<>();
-//        for (User currentUser : allUsers) {
-//            usernames.add(currentUser.getUsername());
-//        }
-//            User user = new User();
-//            user.setFname(fname);
-//            user.setLname(lname);
-//            user.setEmail(email);
-//            user.setPhone(phone);
-//            user.setUsername(username);
-////            enable encoder for password when implimenting security
-//            user.setPassword(password);
-//            users.save(user);
-////
-////            Validator validate = Validation.buildDefaultValidatorFactory().getValidator();
-////            violations = validate.validate(user);
-//
-////            if (violations.isEmpty()) {
-////                users.save(user);
-////            }
-//        
-//        return "redirect:/login";
-//    }
+
 }

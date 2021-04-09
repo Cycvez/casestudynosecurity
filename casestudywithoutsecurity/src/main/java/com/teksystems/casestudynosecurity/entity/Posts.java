@@ -1,6 +1,6 @@
 package com.teksystems.casestudynosecurity.entity;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Entity 
 public class Posts {
@@ -17,15 +19,17 @@ public class Posts {
 	@Id
 	private int id;
 	
-    @ManyToOne
-    @JoinColumn(name = "userId", nullable = false)
-    private User user;
-	
     @Column(nullable = false)
     private String body;
     
-	@Column(nullable = false)
-	private Date createdDate;
+    
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "created")
+	private LocalDate createdDate;
+    
+    @ManyToOne
+    @JoinColumn(name = "user", nullable = false)
+    private User user;
 
 	public int getId() {
 		return id;
@@ -51,11 +55,11 @@ public class Posts {
 		this.body = body;
 	}
 
-	public Date getCreatedDate() {
+	public LocalDate getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = createdDate;
 	}
 
