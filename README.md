@@ -49,6 +49,7 @@ Version 1.0 of full Crud functionality of application
 </td>
 </tr>
 </table>
+
 ![](casestudywithoutsecurity/src/main/resources/static/assets/img/MainPage.JPG)
 
 
