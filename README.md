@@ -50,7 +50,7 @@ Version 1.0 of full Crud functionality of application
 </tr>
 </table>
 
-![](casestudywithoutsecurity/src/main/resources/static/assets/img/MainPage.JPG)
+![](casestudywithoutsecurity/src/main/resources/static/assets/img/MainPage2.JPG)
 
 
 
